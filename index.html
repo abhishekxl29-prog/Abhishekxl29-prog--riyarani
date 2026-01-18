@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Best Friend ❤️</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            background: radial-gradient(circle at top, #3b0a2e, #14000d);
+            color: #ffe6f2;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 30px;
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 40px rgba(255, 120, 180, 0.3);
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fade 0.8s ease;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            margin-top: 25px;
+            padding: 12px 32px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #ff6fae, #ff2f7b);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        .final {
+            font-size: 2rem;
+            color: #ff8fc7;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card mt-20">
+        <!-- STEP 1 -->
+        <div id="step1" class="step active">
+            <div class="text-6xl mb-4">❤️</div>
+            <h1 class="text-4xl mb-4">Hey Riya 🌸</h1>
+            <p>
+                You are not just anyone,  
+                you are my best friend — someone truly special to me.
+            </p>
+            <button class="btn" onclick="nextStep()">Start</button>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="step2" class="step">
+            <h2 class="text-3xl mb-4">
+                Happy Birthday, Riya 🎉
+            </h2>
+            <p>
+                Another year older,  
+                another year of smiles, memories, and strength.
+                I’m really lucky to have you as my best friend.
+            </p>
+            <button class="btn" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- STEP 3 -->
+        <div id="step3" class="step">
+            <h2 class="text-3xl mb-4">Why You Matter So Much</h2>
+            <p>💖 Your smile makes everything lighter</p>
+            <p>🧠 Your thoughts are always real</p>
+            <p>🌸 Your presence feels safe</p>
+            <button class="btn" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- STEP 4 -->
+        <div id="step4" class="step">
+            <h2 class="text-3xl mb-4">A Small Truth</h2>
+            <p>
+                Not everyone gets a best friend like you, Riya.  
+                And I hope you always know how important you are.
+            </p>
+            <button class="btn" onclick="nextStep()">Final</button>
+        </div>
+
+        <!-- STEP 5 -->
+        <div id="step5" class="step">
+            <h2 class="text-3xl mb-4">My Wish For You ✨</h2>
+            <p>
+                May your life be full of happiness, peace,  
+                and people who value you just the way you are.
+            </p>
+
+            <div id="finalText" class="final">
+                Happy Birthday, Riya ❤️  
+                My Dearest Best Friend
+            </div>
+
+            <button class="btn" onclick="celebrate()">Celebrate 🎊</button>
+        </div>
+    </div>
+
+    <script>
+        let step = 1;
+
+        function nextStep() {
+            document.getElementById("step" + step).classList.remove("active");
+            step++;
+            document.getElementById("step" + step).classList.add("active");
+        }
+
+        function celebrate() {
+            document.getElementById("finalText").style.display = "block";
+
+            confetti({
+                particleCount: 250,
+                spread: 360,
+                origin: { y: 0.6 }
+            });
+        }
+    </script>
+
+</body>
+</html>
