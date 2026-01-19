@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Best Friend ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary: #ff4d94;
+            --secondary: #ff99cc;
+            --bg-dark: #0f0211;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 77, 148, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(123, 31, 162, 0.2) 0%, transparent 40%);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        /* Animated Particles Background */
+        .particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.3;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 50px 40px;
+            width: 90%;
+            max-width: 550px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
+                        0 0 30px rgba(255, 77, 148, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        .step { display: none; }
+        .step.active { 
+            display: block; 
+            animation: fadeInCanvas 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeInCanvas {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); filter: blur(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+
+        h1, h2, .final-text {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(to right, #ffb3d9, #ff4d94, #ffb3d9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: textGradient 4s linear infinite;
+        }
+
+        @keyframes textGradient {
+            to { background-position: 200% center; }
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff4d94, #c735d4);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(255, 77, 148, 0.3);
+            border: none;
+            padding: 15px 45px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 77, 148, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .heart-float {
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 77, 148, 0.5));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .glass-accent {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 20px;
+            margin: 10px 0;
+            transition: 0.3s;
+        }
+
+        .glass-accent:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles"></div>
+
+    <div class="card">
+        <div id="step1" class="step active">
+            <div class="text-7xl mb-6 animate__animated animate__pulse animate__infinite">❤️</div>
+            <h1 class="text-5xl mb-6">Hey Riya 🌸</h1>
+            <p class="text-lg text-pink-100 leading-relaxed">
+                You are not just anyone,<br>
+                you are my best friend — someone truly special to me.
+            </p>
+            <button class="btn" onclick="nextStep()">Start Journey ✨</button>
+        </div>
+
+        <div id="step2" class="step">
+            <h2 class="text-4xl mb-6">Happy Birthday, Riya 🎉</h2>
+            <p class="text-lg text-pink-100 leading-relaxed">
+                Another year older,<br>
+                another year of smiles, memories, and strength.<br>
+                I’m really lucky to have you as my best friend.
+            </p>
+            <button class="btn" onclick="nextStep()">Continue 💖</button>
+        </div>
+
+        <div id="step3" class="step text-left">
+            <h2 class="text-4xl mb-6 text-center">Why You Matter So Much</h2>
+            <div class="glass-accent">💖 Your smile makes everything lighter</div>
+            <div class="glass-accent">🧠 Your thoughts are always real</div>
+            <div class="glass-accent">🌸 Your presence feels safe</div>
+            <div class="text-center">
+                <button class="btn" onclick="nextStep()">Keep Going ✨</button>
+            </div>
+        </div>
+
+        <div id="step4" class="step">
+            <h2 class="text-4xl mb-6">A Small Truth</h2>
+            <p class="text-lg text-pink-100 leading-relaxed">
+                Not everyone gets a best friend like you, Riya.<br>
+                And I hope you always know how important you are.
+            </p>
+            <button class="btn" onclick="nextStep()">See My Wish 🎁</button>
+        </div>
+
+        <div id="step5" class="step">
+            <h2 class="text-4xl mb-6">My Wish For You ✨</h2>
+            <p class="text-lg text-pink-100 mb-8 leading-relaxed">
+                May your life be full of happiness, peace,<br>
+                and people who value you just the way you are.
+            </p>
+
+            <div id="finalText" class="final-text text-4xl font-bold mb-6 hidden animate__animated animate__zoomIn">
+                Happy Birthday, Riya ❤️<br>
+                <span class="text-2xl">My Dearest Best Friend</span>
+            </div>
+
+            <button class="btn" id="celebBtn" onclick="celebrate()">Celebrate 🎊</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+
+        function nextStep() {
+            const current = document.getElementById("step" + currentStep);
+            const next = document.getElementById("step" + (currentStep + 1));
+            
+            current.classList.add('animate__animated', 'animate__fadeOutUp');
+            
+            setTimeout(() => {
+                current.style.display = 'none';
+                current.classList.remove('active', 'animate__animated', 'animate__fadeOutUp');
+                next.style.display = 'block';
+                next.classList.add('active');
+                currentStep++;
+            }, 600);
+        }
+
+        function celebrate() {
+            const btn = document.getElementById("celebBtn");
+            const final = document.getElementById("finalText");
+            
+            btn.style.display = "none";
+            final.classList.remove("hidden");
+
+            const duration = 15 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+              const timeLeft = animationEnd - Date.now();
+
+              if (timeLeft <= 0) {
+                return clearInterval(interval);
+              }
+
+              const particleCount = 50 * (timeLeft / duration);
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
